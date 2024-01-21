@@ -1,0 +1,20 @@
+@page
+@model mvcMovie.Pages.TempModel
+@{
+      
+}
+
+<h1>hello</h1>
+@if(Model.Coins != null){
+    <div>@Model.Coins</div>
+    @foreach(var coin in Model.Coins) 
+    {
+        <div>id : @coin.id</div>
+    }
+}
+else{
+    <div>test</div>
+}
+<div>
+    
+</div>

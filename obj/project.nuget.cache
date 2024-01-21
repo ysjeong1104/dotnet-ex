@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "YhW6mhY6d0AbO2bg5PiV+pQSD+cGH4654RsB4qLrZgofr5GBrFSoHE52TobuIAZDJ4tNuJ6ZiZuXz94fVttFEQ==",
+  "success": true,
+  "projectFilePath": "/Users/seogi/dev/dotnet/mvcMovie/mvcMovie.csproj",
+  "expectedPackageFiles": [
+    "/Users/seogi/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

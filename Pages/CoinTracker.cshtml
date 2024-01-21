@@ -1,0 +1,59 @@
+@page
+@model mvcMovie.Pages.CoinTrackerModel
+@{
+    ViewData["Title"] = "CoinTracker";
+
+    var coinList = Model.GetCoinInfos();
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h1>The Coins! (@coinList?.Count)</h1>
+    @if(coinList != null){
+        <select name='selCoin'>
+            <option value=''>-----코인선택-----</option>
+        @foreach(var coin in coinList){
+            <option value='{"coinName":"@coin.name","coinPrice":"@coin.quotes?.usd?.price"}'>
+                @coin.name (@coin.symbol) : $@coin.quotes?.usd?.price USD</option>
+        }
+        </select>
+    }
+    <div>
+        <input type='text' name='txtDallars' />
+        <button id='btnConvert'>Convert</button>
+    </div>
+    <div>
+        <span>Result</span>:<span id='viewResult'></span>
+    </div>
+</div>
+
+<script type='text/javascript'>
+
+    const selCoin  = document.querySelector('select[name=selCoin]');
+    const txtDallars = document.querySelector('input[name=txtDallars]');
+
+    const btnConvert = document.querySelector('#btnConvert');
+
+    const viewResult = document.querySelector('#viewResult');
+
+    selCoin.addEventListener('change',(event)=>{
+        if(event.currentTarget.value === ''){
+            alert('코인을 선택 해주세요');
+            selCoin.focus();
+            return;
+        }
+        if(txtDallars.value ==='')
+            return;
+        const {coinName,coinPrice} = JSON.parse(event.currentTarget.value);
+        viewResult.innerHTML = ( txtDallars.value /coinPrice) +''+ coinName;
+    });
+
+    btnConvert.addEventListener('click',(event)=>{
+        if(txtDallars.value ==='')
+            return;
+        const {coinName,coinPrice} = JSON.parse(selCoin.value);
+        viewResult.innerHTML = ( txtDallars.value / coinPrice) +' '+ coinName;
+
+    });
+</script>
